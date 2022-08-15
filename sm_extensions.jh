@@ -28,12 +28,6 @@ createdAt Instant required
 updatedAt Instant
 }
 
-relationship ManyToOne{
- PaymentType{createdBy(login)} to User
- PaymentFrequency{createdBy(login)} to User
- CustomersPackages{updatedBy(login)} to User 
-}
-
 
 
 service * with serviceClass
