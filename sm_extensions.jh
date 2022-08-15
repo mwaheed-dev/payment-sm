@@ -21,23 +21,20 @@ createdBy String maxlength(30) required
 createdAt Instant required
 updatedAt Instant
 }
-entity CustomersPackages{
+entity CustomerPackages{
 name String maxlength(100) required
 createdBy String maxlength(30) required
 createdAt Instant required
 updatedAt Instant
 }
-
 relationship ManyToOne{
  PaymentType{createdBy(login)} to User
  PaymentFrequency{createdBy(login)} to User
- CustomersPackages{updatedBy(login)} to User 
+ CustomerPackages{updatedBy(login)} to User 
 }
-
 
 
 service * with serviceClass
 dto all with mapstruct
 
-paginate AuditTrail with pagination
     
