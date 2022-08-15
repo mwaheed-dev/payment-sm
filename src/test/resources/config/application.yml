@@ -13,9 +13,19 @@
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
 
+eureka:
+  client:
+    enabled: false
+  instance:
+    appname: SimpleRishta
+    instanceId: SimpleRishta:${spring.application.instance-id:${random.value}}
+
 spring:
   application:
-    name: payment
+    name: SimpleRishta
+  cloud:
+    config:
+      enabled: false
   # Replace by 'prod, faker' to add the faker context and have sample data loaded in production
   liquibase:
     contexts: test
@@ -33,13 +43,13 @@ spring:
     basename: i18n/messages
   task:
     execution:
-      thread-name-prefix: payment-task-
+      thread-name-prefix: simple-rishta-task-
       pool:
         core-size: 1
         max-size: 50
         queue-capacity: 10000
     scheduling:
-      thread-name-prefix: payment-scheduling-
+      thread-name-prefix: simple-rishta-scheduling-
       pool:
         size: 20
   thymeleaf:
@@ -56,9 +66,9 @@ server:
 # ===================================================================
 jhipster:
   clientApp:
-    name: 'paymentApp'
+    name: 'simpleRishtaApp'
   mail:
-    from: payment@localhost.com
+    from: SimpleRishta@localhost.com
     base-url: http://127.0.0.1:8080
   logging:
     # To test json console appender
