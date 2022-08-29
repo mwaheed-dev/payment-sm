@@ -27,6 +27,31 @@ createdBy String maxlength(30) required
 createdAt Instant required
 updatedAt Instant
 }
+entity Tariff{
+tariffCode String maxlength(100) required
+price Double required
+startDate Instant
+endDate Instant
+createdAt Instant required
+updatedAt Instant
+}
+entity CustomersQuotas{
+numberOfProfileViews Integer
+numberOfConversations Integer
+numberOfRequestSent Integer
+freeUsers Integer
+createdAt Instant required
+updatedAt Instant
+}
+entity Country{
+    name String
+    urduName String    
+}
+relationship ManyToOne{
+CustomerPackages {tariff(id)} to Tariff
+CustomersQuotas{customerQuotas(id)} to CustomerPackages
+Tariff{country(name)} to Country
+}
 
 
 service * with serviceClass
