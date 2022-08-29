@@ -1,23 +1,30 @@
 {
   "applications": ["SimpleRishta"],
-  "changelogDate": "20220815150002",
+  "changelogDate": "20220829145942",
   "clientRootFolder": "SimpleRishta",
   "databaseType": "sql",
   "dto": "mapstruct",
   "embedded": false,
-  "entityTableName": "customer_packages",
+  "entityTableName": "tariff",
   "fields": [
     {
-      "fieldName": "name",
+      "fieldName": "tariffCode",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength", "required"],
       "fieldValidateRulesMaxlength": "100"
     },
     {
-      "fieldName": "createdBy",
-      "fieldType": "String",
-      "fieldValidateRules": ["maxlength", "required"],
-      "fieldValidateRulesMaxlength": "30"
+      "fieldName": "price",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "startDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "endDate",
+      "fieldType": "Instant"
     },
     {
       "fieldName": "createdAt",
@@ -32,14 +39,14 @@
   "fluentMethods": true,
   "jpaMetamodelFiltering": false,
   "microserviceName": "SimpleRishta",
-  "name": "CustomerPackages",
+  "name": "Tariff",
   "pagination": "no",
   "readOnly": false,
   "relationships": [
     {
-      "otherEntityField": "id",
-      "otherEntityName": "tariff",
-      "relationshipName": "tariff",
+      "otherEntityField": "name",
+      "otherEntityName": "country",
+      "relationshipName": "country",
       "relationshipType": "many-to-one"
     }
   ],

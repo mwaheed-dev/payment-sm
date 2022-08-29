@@ -49,6 +49,9 @@ public class CacheConfiguration {
             createCache(cm, com.simplerishta.cms.domain.PaymentType.class.getName());
             createCache(cm, com.simplerishta.cms.domain.PaymentFrequency.class.getName());
             createCache(cm, com.simplerishta.cms.domain.CustomerPackages.class.getName());
+            createCache(cm, com.simplerishta.cms.domain.Tariff.class.getName());
+            createCache(cm, com.simplerishta.cms.domain.CustomersQuotas.class.getName());
+            createCache(cm, com.simplerishta.cms.domain.Country.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }
