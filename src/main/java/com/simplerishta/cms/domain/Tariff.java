@@ -1,6 +1,5 @@
 package com.simplerishta.cms.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.time.Instant;
 import javax.persistence.*;
@@ -9,12 +8,12 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
- * A CustomerPackages.
+ * A Tariff.
  */
 @Entity
-@Table(name = "customer_packages")
+@Table(name = "tariff")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class CustomerPackages implements Serializable {
+public class Tariff implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -26,13 +25,18 @@ public class CustomerPackages implements Serializable {
 
     @NotNull
     @Size(max = 100)
-    @Column(name = "name", length = 100, nullable = false)
-    private String name;
+    @Column(name = "tariff_code", length = 100, nullable = false)
+    private String tariffCode;
 
     @NotNull
-    @Size(max = 30)
-    @Column(name = "created_by", length = 30, nullable = false)
-    private String createdBy;
+    @Column(name = "price", nullable = false)
+    private Double price;
+
+    @Column(name = "start_date")
+    private Instant startDate;
+
+    @Column(name = "end_date")
+    private Instant endDate;
 
     @NotNull
     @Column(name = "created_at", nullable = false)
@@ -42,8 +46,7 @@ public class CustomerPackages implements Serializable {
     private Instant updatedAt;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = { "country" }, allowSetters = true)
-    private Tariff tariff;
+    private Country country;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -51,7 +54,7 @@ public class CustomerPackages implements Serializable {
         return this.id;
     }
 
-    public CustomerPackages id(Long id) {
+    public Tariff id(Long id) {
         this.setId(id);
         return this;
     }
@@ -60,37 +63,63 @@ public class CustomerPackages implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return this.name;
+    public String getTariffCode() {
+        return this.tariffCode;
     }
 
-    public CustomerPackages name(String name) {
-        this.setName(name);
+    public Tariff tariffCode(String tariffCode) {
+        this.setTariffCode(tariffCode);
         return this;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTariffCode(String tariffCode) {
+        this.tariffCode = tariffCode;
     }
 
-    public String getCreatedBy() {
-        return this.createdBy;
+    public Double getPrice() {
+        return this.price;
     }
 
-    public CustomerPackages createdBy(String createdBy) {
-        this.setCreatedBy(createdBy);
+    public Tariff price(Double price) {
+        this.setPrice(price);
         return this;
     }
 
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Instant getStartDate() {
+        return this.startDate;
+    }
+
+    public Tariff startDate(Instant startDate) {
+        this.setStartDate(startDate);
+        return this;
+    }
+
+    public void setStartDate(Instant startDate) {
+        this.startDate = startDate;
+    }
+
+    public Instant getEndDate() {
+        return this.endDate;
+    }
+
+    public Tariff endDate(Instant endDate) {
+        this.setEndDate(endDate);
+        return this;
+    }
+
+    public void setEndDate(Instant endDate) {
+        this.endDate = endDate;
     }
 
     public Instant getCreatedAt() {
         return this.createdAt;
     }
 
-    public CustomerPackages createdAt(Instant createdAt) {
+    public Tariff createdAt(Instant createdAt) {
         this.setCreatedAt(createdAt);
         return this;
     }
@@ -103,7 +132,7 @@ public class CustomerPackages implements Serializable {
         return this.updatedAt;
     }
 
-    public CustomerPackages updatedAt(Instant updatedAt) {
+    public Tariff updatedAt(Instant updatedAt) {
         this.setUpdatedAt(updatedAt);
         return this;
     }
@@ -112,16 +141,16 @@ public class CustomerPackages implements Serializable {
         this.updatedAt = updatedAt;
     }
 
-    public Tariff getTariff() {
-        return this.tariff;
+    public Country getCountry() {
+        return this.country;
     }
 
-    public void setTariff(Tariff tariff) {
-        this.tariff = tariff;
+    public void setCountry(Country country) {
+        this.country = country;
     }
 
-    public CustomerPackages tariff(Tariff tariff) {
-        this.setTariff(tariff);
+    public Tariff country(Country country) {
+        this.setCountry(country);
         return this;
     }
 
@@ -132,10 +161,10 @@ public class CustomerPackages implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof CustomerPackages)) {
+        if (!(o instanceof Tariff)) {
             return false;
         }
-        return id != null && id.equals(((CustomerPackages) o).id);
+        return id != null && id.equals(((Tariff) o).id);
     }
 
     @Override
@@ -147,10 +176,12 @@ public class CustomerPackages implements Serializable {
     // prettier-ignore
     @Override
     public String toString() {
-        return "CustomerPackages{" +
+        return "Tariff{" +
             "id=" + getId() +
-            ", name='" + getName() + "'" +
-            ", createdBy='" + getCreatedBy() + "'" +
+            ", tariffCode='" + getTariffCode() + "'" +
+            ", price=" + getPrice() +
+            ", startDate='" + getStartDate() + "'" +
+            ", endDate='" + getEndDate() + "'" +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +
             "}";

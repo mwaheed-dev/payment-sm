@@ -25,6 +25,8 @@ public class CustomerPackagesDTO implements Serializable {
 
     private Instant updatedAt;
 
+    private TariffDTO tariff;
+
     public Long getId() {
         return id;
     }
@@ -65,6 +67,14 @@ public class CustomerPackagesDTO implements Serializable {
         this.updatedAt = updatedAt;
     }
 
+    public TariffDTO getTariff() {
+        return tariff;
+    }
+
+    public void setTariff(TariffDTO tariff) {
+        this.tariff = tariff;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -95,6 +105,7 @@ public class CustomerPackagesDTO implements Serializable {
             ", createdBy='" + getCreatedBy() + "'" +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +
+            ", tariff=" + getTariff() +
             "}";
     }
 }

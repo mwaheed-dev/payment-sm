@@ -1,23 +1,27 @@
 {
   "applications": ["SimpleRishta"],
-  "changelogDate": "20220815150002",
+  "changelogDate": "20220829145943",
   "clientRootFolder": "SimpleRishta",
   "databaseType": "sql",
   "dto": "mapstruct",
   "embedded": false,
-  "entityTableName": "customer_packages",
+  "entityTableName": "customers_quotas",
   "fields": [
     {
-      "fieldName": "name",
-      "fieldType": "String",
-      "fieldValidateRules": ["maxlength", "required"],
-      "fieldValidateRulesMaxlength": "100"
+      "fieldName": "numberOfProfileViews",
+      "fieldType": "Integer"
     },
     {
-      "fieldName": "createdBy",
-      "fieldType": "String",
-      "fieldValidateRules": ["maxlength", "required"],
-      "fieldValidateRulesMaxlength": "30"
+      "fieldName": "numberOfConversations",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "numberOfRequestSent",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "freeUsers",
+      "fieldType": "Integer"
     },
     {
       "fieldName": "createdAt",
@@ -32,14 +36,14 @@
   "fluentMethods": true,
   "jpaMetamodelFiltering": false,
   "microserviceName": "SimpleRishta",
-  "name": "CustomerPackages",
+  "name": "CustomersQuotas",
   "pagination": "no",
   "readOnly": false,
   "relationships": [
     {
       "otherEntityField": "id",
-      "otherEntityName": "tariff",
-      "relationshipName": "tariff",
+      "otherEntityName": "customerPackages",
+      "relationshipName": "customerQuotas",
       "relationshipType": "many-to-one"
     }
   ],

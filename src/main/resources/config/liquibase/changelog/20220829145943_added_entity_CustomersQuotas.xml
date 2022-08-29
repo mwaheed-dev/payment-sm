@@ -7,18 +7,24 @@
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
     <!--
-        Added the entity CustomerPackages.
+        Added the entity CustomersQuotas.
     -->
-    <changeSet id="20220815150002-1" author="jhipster">
-        <createTable tableName="customer_packages">
+    <changeSet id="20220829145943-1" author="jhipster">
+        <createTable tableName="customers_quotas">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="name" type="varchar(100)">
-                <constraints nullable="false" />
+            <column name="number_of_profile_views" type="integer">
+                <constraints nullable="true" />
             </column>
-            <column name="created_by" type="varchar(30)">
-                <constraints nullable="false" />
+            <column name="number_of_conversations" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="number_of_request_sent" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="free_users" type="integer">
+                <constraints nullable="true" />
             </column>
             <column name="created_at" type="${datetimeType}">
                 <constraints nullable="false" />
@@ -26,13 +32,13 @@
             <column name="updated_at" type="${datetimeType}">
                 <constraints nullable="true" />
             </column>
-            <column name="tariff_id" type="bigint">
+            <column name="customer_quotas_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
-        <dropDefaultValue tableName="customer_packages" columnName="created_at" columnDataType="${datetimeType}"/>
-        <dropDefaultValue tableName="customer_packages" columnName="updated_at" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="customers_quotas" columnName="created_at" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="customers_quotas" columnName="updated_at" columnDataType="${datetimeType}"/>
     </changeSet>
 
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
@@ -45,15 +51,17 @@
           This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
           Spring Boot configuration key.
     -->
-    <changeSet id="20220815150002-1-data" author="jhipster" context="faker">
+    <changeSet id="20220829145943-1-data" author="jhipster" context="faker">
         <loadData
-                  file="config/liquibase/fake-data/customer_packages.csv"
+                  file="config/liquibase/fake-data/customers_quotas.csv"
                   separator=";"
-                  tableName="customer_packages"
+                  tableName="customers_quotas"
                   usePreparedStatements="true">
             <column name="id" type="numeric"/>
-            <column name="name" type="string"/>
-            <column name="created_by" type="string"/>
+            <column name="number_of_profile_views" type="numeric"/>
+            <column name="number_of_conversations" type="numeric"/>
+            <column name="number_of_request_sent" type="numeric"/>
+            <column name="free_users" type="numeric"/>
             <column name="created_at" type="date"/>
             <column name="updated_at" type="date"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
