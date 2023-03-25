@@ -1,0 +1,18 @@
+{
+  "applications": ["SimpleRishta"],
+  "changelogDate": "20230325142155",
+  "clientRootFolder": "SimpleRishta",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "user_tariff",
+  "fields": [],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "SimpleRishta",
+  "name": "UserTariff",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceClass"
+}

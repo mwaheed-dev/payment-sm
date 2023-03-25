@@ -53,7 +53,7 @@ public class TariffService {
      * @return the persisted entity.
      */
     public TariffDTO update(TariffDTO tariffDTO) {
-        log.debug("Request to save Tariff : {}", tariffDTO);
+        log.debug("Request to update Tariff : {}", tariffDTO);
         Tariff tariff = tariffMapper.toEntity(tariffDTO);
         tariff = tariffRepository.save(tariff);
         return tariffMapper.toDto(tariff);

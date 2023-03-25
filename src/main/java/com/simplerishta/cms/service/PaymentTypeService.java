@@ -51,7 +51,7 @@ public class PaymentTypeService {
      * @return the persisted entity.
      */
     public PaymentTypeDTO update(PaymentTypeDTO paymentTypeDTO) {
-        log.debug("Request to save PaymentType : {}", paymentTypeDTO);
+        log.debug("Request to update PaymentType : {}", paymentTypeDTO);
         PaymentType paymentType = paymentTypeMapper.toEntity(paymentTypeDTO);
         paymentType = paymentTypeRepository.save(paymentType);
         return paymentTypeMapper.toDto(paymentType);

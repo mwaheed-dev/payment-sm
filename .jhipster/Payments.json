@@ -1,0 +1,73 @@
+{
+  "applications": ["SimpleRishta"],
+  "changelogDate": "20230325142156",
+  "clientRootFolder": "SimpleRishta",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "payments",
+  "fields": [
+    {
+      "fieldName": "transactionType",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "paymentProvider",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "transactionTime",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "amount",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "paymentType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "txnReferenceNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "responseCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "providerReferenceNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdAt",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "updatedAt",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "SimpleRishta",
+  "name": "Payments",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "userTariff",
+      "relationshipName": "payments",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

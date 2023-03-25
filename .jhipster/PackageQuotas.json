@@ -1,0 +1,47 @@
+{
+  "applications": ["SimpleRishta"],
+  "changelogDate": "20230325142154",
+  "clientRootFolder": "SimpleRishta",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "package_quotas",
+  "fields": [
+    {
+      "fieldName": "numberOfProfileViews",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "numberOfConversations",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "numberOfRequestSent",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "createdAt",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "updatedAt",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "SimpleRishta",
+  "name": "PackageQuotas",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "packages",
+      "relationshipName": "packageQuotas",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

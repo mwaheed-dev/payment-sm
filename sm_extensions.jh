@@ -21,25 +21,23 @@ createdBy String maxlength(30) required
 createdAt Instant required
 updatedAt Instant
 }
-entity CustomerPackages{
-name String maxlength(100) required
+entity Packages{
+name String maxlength(200) required
 createdBy String maxlength(30) required
 createdAt Instant required
 updatedAt Instant
 }
 entity Tariff{
-tariffCode String maxlength(100) required
+tariffCode String maxlength(150) required
 price Double required
-startDate Instant
-endDate Instant
+duration Integer
 createdAt Instant required
 updatedAt Instant
 }
-entity CustomersQuotas{
+entity PackageQuotas{
 numberOfProfileViews Integer
 numberOfConversations Integer
 numberOfRequestSent Integer
-freeUsers Integer
 createdAt Instant required
 updatedAt Instant
 }
@@ -48,9 +46,52 @@ entity Country{
     urduName String    
 }
 relationship ManyToOne{
-CustomerPackages {tariff(id)} to Tariff
-CustomersQuotas{customerQuotas(id)} to CustomerPackages
+Tariff {tariff(id)} to Packages
+PackageQuotas{packageQuotas(id)} to Packages
 Tariff{country(name)} to Country
+JazzCashPayment {payments(id)} to Payments
+Tariff {tariff(id)} to UserTariff
+Payments {payments(id)} to UserTariff
+}
+entity UserTariff {
+
+}
+entity Payments{
+  transactionType String required
+  paymentProvider String required
+  transactionTime Instant
+  amount Double
+  paymentType String
+  txnReferenceNumber String
+  responseCode String
+  status String
+  providerReferenceNumber String
+  createdAt Instant required
+  updatedAt Instant
+}
+entity JazzCashPayment{
+    ppAmount String
+    ppAuthCode String
+    ppBankID String
+    ppBillReference String
+    ppLanguage String
+    ppMerchantID String
+    ppResponseCode String
+    ppResponseMessage String
+    ppRetreivalReferenceNo String
+    ppSecureHash String
+    ppSettlementExpiry String
+    ppSubMerchantId String
+    ppTxnCurrency String
+    ppTxnDateTime String
+    ppTxnRefNo String
+    ppTxnType String
+    ppVersion String
+    ppmbf1 String
+    ppmbf2 String
+    ppmbf3 String
+    ppmbf4 String
+    ppmbf5 String    
 }
 
 

@@ -8,6 +8,7 @@ import javax.validation.constraints.*;
 /**
  * A DTO for the {@link com.simplerishta.cms.domain.PaymentType} entity.
  */
+@SuppressWarnings("common-java:DuplicatedBlocks")
 public class PaymentTypeDTO implements Serializable {
 
     private Long id;
