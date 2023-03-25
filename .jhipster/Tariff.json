@@ -11,7 +11,7 @@
       "fieldName": "tariffCode",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength", "required"],
-      "fieldValidateRulesMaxlength": "100"
+      "fieldValidateRulesMaxlength": "150"
     },
     {
       "fieldName": "price",
@@ -19,12 +19,8 @@
       "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "startDate",
-      "fieldType": "Instant"
-    },
-    {
-      "fieldName": "endDate",
-      "fieldType": "Instant"
+      "fieldName": "duration",
+      "fieldType": "Integer"
     },
     {
       "fieldName": "createdAt",
@@ -44,9 +40,21 @@
   "readOnly": false,
   "relationships": [
     {
+      "otherEntityField": "id",
+      "otherEntityName": "packages",
+      "relationshipName": "tariff",
+      "relationshipType": "many-to-one"
+    },
+    {
       "otherEntityField": "name",
       "otherEntityName": "country",
       "relationshipName": "country",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "userTariff",
+      "relationshipName": "tariff",
       "relationshipType": "many-to-one"
     }
   ],

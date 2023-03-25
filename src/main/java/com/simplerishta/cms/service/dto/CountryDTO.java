@@ -6,6 +6,7 @@ import java.util.Objects;
 /**
  * A DTO for the {@link com.simplerishta.cms.domain.Country} entity.
  */
+@SuppressWarnings("common-java:DuplicatedBlocks")
 public class CountryDTO implements Serializable {
 
     private Long id;
