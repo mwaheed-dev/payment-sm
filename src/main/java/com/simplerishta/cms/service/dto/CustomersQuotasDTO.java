@@ -8,6 +8,7 @@ import javax.validation.constraints.*;
 /**
  * A DTO for the {@link com.simplerishta.cms.domain.CustomersQuotas} entity.
  */
+@SuppressWarnings("common-java:DuplicatedBlocks")
 public class CustomersQuotasDTO implements Serializable {
 
     private Long id;

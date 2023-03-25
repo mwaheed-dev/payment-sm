@@ -13,7 +13,7 @@ services:
       - SPRING_LIQUIBASE_URL=jdbc:postgresql://simplerishta-postgresql:5432/SimpleRishta
       - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
   simplerishta-postgresql:
-    image: postgres:14.4
+    image: postgres:14.5
     # volumes:
     #   - ~/volumes/jhipster/SimpleRishta/postgresql/:/var/lib/postgresql/data/
     environment:

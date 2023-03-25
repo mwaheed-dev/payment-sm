@@ -8,10 +8,22 @@
     -->
     <changeSet id="20220829145942-2" author="jhipster">
 
+        <addForeignKeyConstraint baseColumnNames="tariff_id"
+                                 baseTableName="tariff"
+                                 constraintName="fk_tariff__tariff_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="packages"/>
+
         <addForeignKeyConstraint baseColumnNames="country_id"
                                  baseTableName="tariff"
                                  constraintName="fk_tariff__country_id"
                                  referencedColumnNames="id"
                                  referencedTableName="country"/>
+
+        <addForeignKeyConstraint baseColumnNames="tariff_id"
+                                 baseTableName="tariff"
+                                 constraintName="fk_tariff__tariff_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user_tariff"/>
     </changeSet>
 </databaseChangeLog>

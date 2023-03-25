@@ -8,27 +8,30 @@ import javax.validation.constraints.*;
 /**
  * A DTO for the {@link com.simplerishta.cms.domain.Tariff} entity.
  */
+@SuppressWarnings("common-java:DuplicatedBlocks")
 public class TariffDTO implements Serializable {
 
     private Long id;
 
     @NotNull
-    @Size(max = 100)
+    @Size(max = 150)
     private String tariffCode;
 
     @NotNull
     private Double price;
 
-    private Instant startDate;
-
-    private Instant endDate;
+    private Integer duration;
 
     @NotNull
     private Instant createdAt;
 
     private Instant updatedAt;
 
+    private PackagesDTO tariff;
+
     private CountryDTO country;
+
+    private UserTariffDTO tariff;
 
     public Long getId() {
         return id;
@@ -54,20 +57,12 @@ public class TariffDTO implements Serializable {
         this.price = price;
     }
 
-    public Instant getStartDate() {
-        return startDate;
+    public Integer getDuration() {
+        return duration;
     }
 
-    public void setStartDate(Instant startDate) {
-        this.startDate = startDate;
-    }
-
-    public Instant getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Instant endDate) {
-        this.endDate = endDate;
+    public void setDuration(Integer duration) {
+        this.duration = duration;
     }
 
     public Instant getCreatedAt() {
@@ -86,12 +81,28 @@ public class TariffDTO implements Serializable {
         this.updatedAt = updatedAt;
     }
 
+    public PackagesDTO getTariff() {
+        return tariff;
+    }
+
+    public void setTariff(PackagesDTO tariff) {
+        this.tariff = tariff;
+    }
+
     public CountryDTO getCountry() {
         return country;
     }
 
     public void setCountry(CountryDTO country) {
         this.country = country;
+    }
+
+    public UserTariffDTO getTariff() {
+        return tariff;
+    }
+
+    public void setTariff(UserTariffDTO tariff) {
+        this.tariff = tariff;
     }
 
     @Override
@@ -122,11 +133,12 @@ public class TariffDTO implements Serializable {
             "id=" + getId() +
             ", tariffCode='" + getTariffCode() + "'" +
             ", price=" + getPrice() +
-            ", startDate='" + getStartDate() + "'" +
-            ", endDate='" + getEndDate() + "'" +
+            ", duration=" + getDuration() +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +
+            ", tariff=" + getTariff() +
             ", country=" + getCountry() +
+            ", tariff=" + getTariff() +
             "}";
     }
 }
