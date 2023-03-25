@@ -51,7 +51,7 @@ public class CustomersQuotasService {
      * @return the persisted entity.
      */
     public CustomersQuotasDTO update(CustomersQuotasDTO customersQuotasDTO) {
-        log.debug("Request to save CustomersQuotas : {}", customersQuotasDTO);
+        log.debug("Request to update CustomersQuotas : {}", customersQuotasDTO);
         CustomersQuotas customersQuotas = customersQuotasMapper.toEntity(customersQuotasDTO);
         customersQuotas = customersQuotasRepository.save(customersQuotas);
         return customersQuotasMapper.toDto(customersQuotas);

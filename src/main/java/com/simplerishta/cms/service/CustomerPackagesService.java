@@ -51,7 +51,7 @@ public class CustomerPackagesService {
      * @return the persisted entity.
      */
     public CustomerPackagesDTO update(CustomerPackagesDTO customerPackagesDTO) {
-        log.debug("Request to save CustomerPackages : {}", customerPackagesDTO);
+        log.debug("Request to update CustomerPackages : {}", customerPackagesDTO);
         CustomerPackages customerPackages = customerPackagesMapper.toEntity(customerPackagesDTO);
         customerPackages = customerPackagesRepository.save(customerPackages);
         return customerPackagesMapper.toDto(customerPackages);

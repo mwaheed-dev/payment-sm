@@ -49,11 +49,8 @@ class TariffResourceIT {
     private static final Double DEFAULT_PRICE = 1D;
     private static final Double UPDATED_PRICE = 2D;
 
-    private static final Instant DEFAULT_START_DATE = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_START_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-
-    private static final Instant DEFAULT_END_DATE = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_END_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Integer DEFAULT_DURATION = 1;
+    private static final Integer UPDATED_DURATION = 2;
 
     private static final Instant DEFAULT_CREATED_AT = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_CREATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
@@ -97,8 +94,7 @@ class TariffResourceIT {
         Tariff tariff = new Tariff()
             .tariffCode(DEFAULT_TARIFF_CODE)
             .price(DEFAULT_PRICE)
-            .startDate(DEFAULT_START_DATE)
-            .endDate(DEFAULT_END_DATE)
+            .duration(DEFAULT_DURATION)
             .createdAt(DEFAULT_CREATED_AT)
             .updatedAt(DEFAULT_UPDATED_AT);
         return tariff;
@@ -114,8 +110,7 @@ class TariffResourceIT {
         Tariff tariff = new Tariff()
             .tariffCode(UPDATED_TARIFF_CODE)
             .price(UPDATED_PRICE)
-            .startDate(UPDATED_START_DATE)
-            .endDate(UPDATED_END_DATE)
+            .duration(UPDATED_DURATION)
             .createdAt(UPDATED_CREATED_AT)
             .updatedAt(UPDATED_UPDATED_AT);
         return tariff;
@@ -142,8 +137,7 @@ class TariffResourceIT {
         Tariff testTariff = tariffList.get(tariffList.size() - 1);
         assertThat(testTariff.getTariffCode()).isEqualTo(DEFAULT_TARIFF_CODE);
         assertThat(testTariff.getPrice()).isEqualTo(DEFAULT_PRICE);
-        assertThat(testTariff.getStartDate()).isEqualTo(DEFAULT_START_DATE);
-        assertThat(testTariff.getEndDate()).isEqualTo(DEFAULT_END_DATE);
+        assertThat(testTariff.getDuration()).isEqualTo(DEFAULT_DURATION);
         assertThat(testTariff.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
         assertThat(testTariff.getUpdatedAt()).isEqualTo(DEFAULT_UPDATED_AT);
     }
@@ -235,8 +229,7 @@ class TariffResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(tariff.getId().intValue())))
             .andExpect(jsonPath("$.[*].tariffCode").value(hasItem(DEFAULT_TARIFF_CODE)))
             .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.doubleValue())))
-            .andExpect(jsonPath("$.[*].startDate").value(hasItem(DEFAULT_START_DATE.toString())))
-            .andExpect(jsonPath("$.[*].endDate").value(hasItem(DEFAULT_END_DATE.toString())))
+            .andExpect(jsonPath("$.[*].duration").value(hasItem(DEFAULT_DURATION)))
             .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
             .andExpect(jsonPath("$.[*].updatedAt").value(hasItem(DEFAULT_UPDATED_AT.toString())));
     }
@@ -272,8 +265,7 @@ class TariffResourceIT {
             .andExpect(jsonPath("$.id").value(tariff.getId().intValue()))
             .andExpect(jsonPath("$.tariffCode").value(DEFAULT_TARIFF_CODE))
             .andExpect(jsonPath("$.price").value(DEFAULT_PRICE.doubleValue()))
-            .andExpect(jsonPath("$.startDate").value(DEFAULT_START_DATE.toString()))
-            .andExpect(jsonPath("$.endDate").value(DEFAULT_END_DATE.toString()))
+            .andExpect(jsonPath("$.duration").value(DEFAULT_DURATION))
             .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
             .andExpect(jsonPath("$.updatedAt").value(DEFAULT_UPDATED_AT.toString()));
     }
@@ -287,7 +279,7 @@ class TariffResourceIT {
 
     @Test
     @Transactional
-    void putNewTariff() throws Exception {
+    void putExistingTariff() throws Exception {
         // Initialize the database
         tariffRepository.saveAndFlush(tariff);
 
@@ -300,8 +292,7 @@ class TariffResourceIT {
         updatedTariff
             .tariffCode(UPDATED_TARIFF_CODE)
             .price(UPDATED_PRICE)
-            .startDate(UPDATED_START_DATE)
-            .endDate(UPDATED_END_DATE)
+            .duration(UPDATED_DURATION)
             .createdAt(UPDATED_CREATED_AT)
             .updatedAt(UPDATED_UPDATED_AT);
         TariffDTO tariffDTO = tariffMapper.toDto(updatedTariff);
@@ -320,8 +311,7 @@ class TariffResourceIT {
         Tariff testTariff = tariffList.get(tariffList.size() - 1);
         assertThat(testTariff.getTariffCode()).isEqualTo(UPDATED_TARIFF_CODE);
         assertThat(testTariff.getPrice()).isEqualTo(UPDATED_PRICE);
-        assertThat(testTariff.getStartDate()).isEqualTo(UPDATED_START_DATE);
-        assertThat(testTariff.getEndDate()).isEqualTo(UPDATED_END_DATE);
+        assertThat(testTariff.getDuration()).isEqualTo(UPDATED_DURATION);
         assertThat(testTariff.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
         assertThat(testTariff.getUpdatedAt()).isEqualTo(UPDATED_UPDATED_AT);
     }
@@ -403,7 +393,7 @@ class TariffResourceIT {
         Tariff partialUpdatedTariff = new Tariff();
         partialUpdatedTariff.setId(tariff.getId());
 
-        partialUpdatedTariff.startDate(UPDATED_START_DATE).endDate(UPDATED_END_DATE).updatedAt(UPDATED_UPDATED_AT);
+        partialUpdatedTariff.duration(UPDATED_DURATION).createdAt(UPDATED_CREATED_AT);
 
         restTariffMockMvc
             .perform(
@@ -419,10 +409,9 @@ class TariffResourceIT {
         Tariff testTariff = tariffList.get(tariffList.size() - 1);
         assertThat(testTariff.getTariffCode()).isEqualTo(DEFAULT_TARIFF_CODE);
         assertThat(testTariff.getPrice()).isEqualTo(DEFAULT_PRICE);
-        assertThat(testTariff.getStartDate()).isEqualTo(UPDATED_START_DATE);
-        assertThat(testTariff.getEndDate()).isEqualTo(UPDATED_END_DATE);
-        assertThat(testTariff.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
-        assertThat(testTariff.getUpdatedAt()).isEqualTo(UPDATED_UPDATED_AT);
+        assertThat(testTariff.getDuration()).isEqualTo(UPDATED_DURATION);
+        assertThat(testTariff.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
+        assertThat(testTariff.getUpdatedAt()).isEqualTo(DEFAULT_UPDATED_AT);
     }
 
     @Test
@@ -440,8 +429,7 @@ class TariffResourceIT {
         partialUpdatedTariff
             .tariffCode(UPDATED_TARIFF_CODE)
             .price(UPDATED_PRICE)
-            .startDate(UPDATED_START_DATE)
-            .endDate(UPDATED_END_DATE)
+            .duration(UPDATED_DURATION)
             .createdAt(UPDATED_CREATED_AT)
             .updatedAt(UPDATED_UPDATED_AT);
 
@@ -459,8 +447,7 @@ class TariffResourceIT {
         Tariff testTariff = tariffList.get(tariffList.size() - 1);
         assertThat(testTariff.getTariffCode()).isEqualTo(UPDATED_TARIFF_CODE);
         assertThat(testTariff.getPrice()).isEqualTo(UPDATED_PRICE);
-        assertThat(testTariff.getStartDate()).isEqualTo(UPDATED_START_DATE);
-        assertThat(testTariff.getEndDate()).isEqualTo(UPDATED_END_DATE);
+        assertThat(testTariff.getDuration()).isEqualTo(UPDATED_DURATION);
         assertThat(testTariff.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
         assertThat(testTariff.getUpdatedAt()).isEqualTo(UPDATED_UPDATED_AT);
     }

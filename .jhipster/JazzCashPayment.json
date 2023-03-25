@@ -1,0 +1,114 @@
+{
+  "applications": ["SimpleRishta"],
+  "changelogDate": "20230325144003",
+  "clientRootFolder": "SimpleRishta",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "jazz_cash_payment",
+  "fields": [
+    {
+      "fieldName": "ppAmount",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ppAuthCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ppBankID",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ppBillReference",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ppLanguage",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ppMerchantID",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ppResponseCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ppResponseMessage",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ppRetreivalReferenceNo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ppSecureHash",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ppSettlementExpiry",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ppSubMerchantId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ppTxnCurrency",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ppTxnDateTime",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ppTxnRefNo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ppTxnType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ppVersion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ppmbf1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ppmbf2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ppmbf3",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ppmbf4",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ppmbf5",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "SimpleRishta",
+  "name": "JazzCashPayment",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "payments",
+      "relationshipName": "payments",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}
