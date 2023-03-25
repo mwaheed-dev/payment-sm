@@ -248,7 +248,7 @@ class CustomerPackagesResourceIT {
 
     @Test
     @Transactional
-    void putNewCustomerPackages() throws Exception {
+    void putExistingCustomerPackages() throws Exception {
         // Initialize the database
         customerPackagesRepository.saveAndFlush(customerPackages);
 

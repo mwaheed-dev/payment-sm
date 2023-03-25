@@ -224,7 +224,7 @@ class CustomersQuotasResourceIT {
 
     @Test
     @Transactional
-    void putNewCustomersQuotas() throws Exception {
+    void putExistingCustomersQuotas() throws Exception {
         // Initialize the database
         customersQuotasRepository.saveAndFlush(customersQuotas);
 
