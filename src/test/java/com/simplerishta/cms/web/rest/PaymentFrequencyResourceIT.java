@@ -248,7 +248,7 @@ class PaymentFrequencyResourceIT {
 
     @Test
     @Transactional
-    void putNewPaymentFrequency() throws Exception {
+    void putExistingPaymentFrequency() throws Exception {
         // Initialize the database
         paymentFrequencyRepository.saveAndFlush(paymentFrequency);
 

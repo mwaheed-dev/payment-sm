@@ -51,7 +51,7 @@ public class PaymentFrequencyService {
      * @return the persisted entity.
      */
     public PaymentFrequencyDTO update(PaymentFrequencyDTO paymentFrequencyDTO) {
-        log.debug("Request to save PaymentFrequency : {}", paymentFrequencyDTO);
+        log.debug("Request to update PaymentFrequency : {}", paymentFrequencyDTO);
         PaymentFrequency paymentFrequency = paymentFrequencyMapper.toEntity(paymentFrequencyDTO);
         paymentFrequency = paymentFrequencyRepository.save(paymentFrequency);
         return paymentFrequencyMapper.toDto(paymentFrequency);

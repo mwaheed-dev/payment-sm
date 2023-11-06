@@ -14,6 +14,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @Entity
 @Table(name = "customer_packages")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@SuppressWarnings("common-java:DuplicatedBlocks")
 public class CustomerPackages implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,7 +43,7 @@ public class CustomerPackages implements Serializable {
     private Instant updatedAt;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = { "country" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "packages", "country" }, allowSetters = true)
     private Tariff tariff;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

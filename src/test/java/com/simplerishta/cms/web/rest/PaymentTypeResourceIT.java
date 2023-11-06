@@ -248,7 +248,7 @@ class PaymentTypeResourceIT {
 
     @Test
     @Transactional
-    void putNewPaymentType() throws Exception {
+    void putExistingPaymentType() throws Exception {
         // Initialize the database
         paymentTypeRepository.saveAndFlush(paymentType);
 

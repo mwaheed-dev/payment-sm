@@ -13,6 +13,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @Entity
 @Table(name = "tariff")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@SuppressWarnings("common-java:DuplicatedBlocks")
 public class Tariff implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -24,19 +25,16 @@ public class Tariff implements Serializable {
     private Long id;
 
     @NotNull
-    @Size(max = 100)
-    @Column(name = "tariff_code", length = 100, nullable = false)
+    @Size(max = 150)
+    @Column(name = "tariff_code", length = 150, nullable = false)
     private String tariffCode;
 
     @NotNull
     @Column(name = "price", nullable = false)
     private Double price;
 
-    @Column(name = "start_date")
-    private Instant startDate;
-
-    @Column(name = "end_date")
-    private Instant endDate;
+    @Column(name = "duration")
+    private Integer duration;
 
     @NotNull
     @Column(name = "created_at", nullable = false)
@@ -44,6 +42,9 @@ public class Tariff implements Serializable {
 
     @Column(name = "updated_at")
     private Instant updatedAt;
+
+    @ManyToOne
+    private Packages packages;
 
     @ManyToOne
     private Country country;
@@ -89,30 +90,17 @@ public class Tariff implements Serializable {
         this.price = price;
     }
 
-    public Instant getStartDate() {
-        return this.startDate;
+    public Integer getDuration() {
+        return this.duration;
     }
 
-    public Tariff startDate(Instant startDate) {
-        this.setStartDate(startDate);
+    public Tariff duration(Integer duration) {
+        this.setDuration(duration);
         return this;
     }
 
-    public void setStartDate(Instant startDate) {
-        this.startDate = startDate;
-    }
-
-    public Instant getEndDate() {
-        return this.endDate;
-    }
-
-    public Tariff endDate(Instant endDate) {
-        this.setEndDate(endDate);
-        return this;
-    }
-
-    public void setEndDate(Instant endDate) {
-        this.endDate = endDate;
+    public void setDuration(Integer duration) {
+        this.duration = duration;
     }
 
     public Instant getCreatedAt() {
@@ -139,6 +127,19 @@ public class Tariff implements Serializable {
 
     public void setUpdatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public Packages getPackages() {
+        return this.packages;
+    }
+
+    public void setPackages(Packages packages) {
+        this.packages = packages;
+    }
+
+    public Tariff packages(Packages packages) {
+        this.setPackages(packages);
+        return this;
     }
 
     public Country getCountry() {
@@ -180,8 +181,7 @@ public class Tariff implements Serializable {
             "id=" + getId() +
             ", tariffCode='" + getTariffCode() + "'" +
             ", price=" + getPrice() +
-            ", startDate='" + getStartDate() + "'" +
-            ", endDate='" + getEndDate() + "'" +
+            ", duration=" + getDuration() +
             ", createdAt='" + getCreatedAt() + "'" +
             ", updatedAt='" + getUpdatedAt() + "'" +
             "}";
